@@ -19,7 +19,7 @@ app.get('/rol',(req,res)=>{
 });
 
 app.post('/rol',(req,res)=>{
-  let body = req.bodyParser
+  let body = req.body
 
   let rolParaGuardar = new Rol({
     name: body.name,
@@ -41,7 +41,7 @@ app.post('/rol',(req,res)=>{
     }
     res.status(200).json({
       ok: true,
-      usuarioDB
+      rolDB
     });
   });
 });

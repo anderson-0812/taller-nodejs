@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose'); // es elestandar de orm para mongodb
 const app = express()
 const bodyParser = require('body-parser')
-const port = 3000
+const port = 3500
 
 // Middleware
 //definimos el formato que va,os a ocupar

@@ -6,15 +6,6 @@ const port = 3000
 app.use(require('./users'));
 app.use(require('./rol'));
 
-
-// Middleware
-//definimos el formato que va,os a ocupar
-app.use(bodyParser.json);
-// es un atribiuto de seguridad
-app.use(bodyParser.urlencoded({
-  extended:false
-}))
-
 //ponemos la direccion donde vaya a buscar mi codigo
 //'./users' => nombre del archivo
 // app.use(require('./roles'));
