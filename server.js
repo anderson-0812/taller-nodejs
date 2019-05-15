@@ -15,10 +15,20 @@ app.use(bodyParser.urlencoded({
   extended:false
 }))
 
+
+app.use(bodyParser.json());
 // definimos nuestra hoja de rutas (index)
 app.use (require('./routes/index'))
 
-app.get('/usuario', (req, res) => res.send('Hello World!'))
+// app.get('/usuario', (req, res) => res.send('Hello World!'))
+
+// hacemos la conexion con la base de datos ojo sgq es el nombre de la db
+mongoose.connect('mongodb://localhost:27017/sga',{
+  useNewUrlParser: true
+},(err,res)=>{
+  if(err) throw error;
+  console.log(`Mongo is working ${6 + 7}`);
+})
 
 
-app.listen(port, () => console.log(`Corriendo in the port ${port}!`))
+app.listen(port,() => console.log(`Corriendo in the port ${port}!`))
