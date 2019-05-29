@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const port = 3000
 app.use(require('./users'));
 app.use(require('./rol'));
+app.use(require('./sala')); 
 
 //ponemos la direccion donde vaya a buscar mi codigo
 //'./users' => nombre del archivo

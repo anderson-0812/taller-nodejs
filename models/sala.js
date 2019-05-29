@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let rolSchema = new Schema({
+let salaSchema = new Schema({
   name:{
     type:String,
     required:[true,"El nombre es requerido"]
-
   },
   description:{
     type:String,
-    required:[true,"El description es requerido"]
+    required:[true,"La descripcion es requerida"]
   },
   state:{
-    type: Boolean,
+    type:Boolean,
     default:true
   }
 });
 
-
-// en esta parte creo la tabla le paso el nombre y su esquema
-module.exports  = mongoose.model('Rol',rolSchema);
+// creo la tabla, paso el nombre y su esquema
+module.exports =  mongoose.model('Sala',salaSchema);

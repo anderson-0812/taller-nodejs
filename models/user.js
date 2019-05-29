@@ -11,7 +11,7 @@ let userSchema = new Schema({
     type:String
   },
   email:{
-    type:Number,
+    type:String,
     required:[true,"El email es requerido"]
   },
   username:{
@@ -31,7 +31,9 @@ let userSchema = new Schema({
     required:[true,"El rol es requerido"]
   },
   state:{
-    type: Boolean
+
+      type:Boolean,
+      default:true
   }
 })
 
@@ -45,8 +47,8 @@ userSchema.methods.JSON = function(){
 }
 
 //
-userSchema.plugin(uniqueValidator,{
-  message: `{PATH} debe ser unico`
-});
+// userSchema.plugin(uniqueValidator,{
+//   message: `{PATH} debe ser unico`
+// });
 // en esta parte creo la tabla le paso el nombre y su esquema
 module.exports  = mongoose.model('User',userSchema);

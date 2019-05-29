@@ -23,7 +23,10 @@ const User = require('../models/user'); // importo al modelo
 // })
 // obtenemos elusuario
 app.get("/user", (req,res) => {
-  User.find().exec((err, usuarioDB) => {
+  // find(aqui van las condiciones de busquedas)
+  User.find({
+    "state":true
+  }).exec((err, usuarioDB) => {
     if (err) {
       return res.status(500).json({
         ok: false,
@@ -44,12 +47,17 @@ app.put("/user/:id",(req,res)=>{
 
   // cargamos los valores
   let usuarioPorEditar = {
-    nombre: body.nombre,
-    apellido: body.apellido,
-    edad: body.edad
+    name: body.name,
+    lastName: body.lastName,
+    email: body.email,
+    username: body.username,
+    password: body.password,
+    age: body.age,
+    rol: body.rol
+
   }
 
-  User.findByIdAndUpdate(id, userEdit, {
+  User.findByIdAndUpdate(id, usuarioPorEditar, {
     new: true,
     runValidators: true
   }, (err, usuarioDB)=>{
@@ -79,9 +87,14 @@ app.post("/user",(req,res)=>{
   let body =req.body;
   //objeto a guardar
   let userGuardar = new User({
-    nombre:body.nombre,
-    apellido:body.apellido,
-    edad:body.edad
+    name: body.name,
+    lastName: body.lastName,
+    email: body.email,
+    username: body.username,
+    password: body.password,
+    age: body.age,
+    rol: body.rol,
+    state: body.state
   });
   userGuardar.save((err,usuarioDB)=>{
     if(err){
@@ -105,6 +118,35 @@ app.post("/user",(req,res)=>{
   })
 
 })
+
+// eliminamos
+app.delete("/user/:id",(req,res)=>{
+  let id = req.params.id
+  let usuarioState = {
+    state:false
+  }
+
+  User.findByIdAndUpdate(id,usuarioState,{
+    new:true,
+    runValidators:true
+  },(err,usuarioDB)=>{
+    if(err){
+      return res.status(500).json({
+        ok:false,
+        err
+      })
+    }
+    if(!usuarioDB){
+      ok:false,
+      usuarioDB
+    }
+
+    res.status(200).json({
+      ok:true,
+      usuarioDB
+    })
+  })
+});
 module.exports = app
 
 //app.use (requiere('./routes/index'))
