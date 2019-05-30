@@ -1,3 +1,4 @@
+require('./config/config') // esto va siempre al inicio apra q tomaesta configuracion antes q todo
 const express = require('express')
 const mongoose = require('mongoose'); // es elestandar de orm para mongodb
 const app = express()
@@ -23,7 +24,9 @@ app.use (require('./routes/index'))
 // app.get('/usuario', (req, res) => res.send('Hello World!'))
 
 // hacemos la conexion con la base de datos ojo sgq es el nombre de la db
-mongoose.connect('mongodb://localhost:27017/sga',{
+// mongoose.connect('mongodb://localhost:27017/sga',{
+mongoose.connect(process.env.URLDB,{ //de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
+
   useNewUrlParser: true
 },(err,res)=>{
   if(err) throw error;
