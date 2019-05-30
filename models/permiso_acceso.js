@@ -14,6 +14,11 @@ let PermisoSchema = new Schema({
     ref:"User",
     required:[true,'Deberia ser asignado']
   },
+  sala:{
+    type:Schema.Types.ObjectId,
+    ref:"Sala",
+    required:[true,'Deberia ser asignado']
+  },
   typeAccess: {
     type: String,
     enum: typeAccess
