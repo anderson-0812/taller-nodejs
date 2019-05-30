@@ -88,7 +88,9 @@ app.post('/permiso',(req,res)=>{
       }
     }
   }).sort({
-    _id: -1 // nos tare el ultimo registro ordenado desencedntemente
+    // nos tare el ultimo registro ordenado desencedntemente antes de ejecutar la funciones de guardado
+
+    _id: -1
   });
 });
 
