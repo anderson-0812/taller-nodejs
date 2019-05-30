@@ -20,6 +20,8 @@
   "homepage": "https://github.com/anderson-0812/taller-nodejs#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "date-and-time": "^0.6.3",
+    "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "mongoose": "^5.5.8",
     "mongoose-unique-validator": "^2.0.3"
