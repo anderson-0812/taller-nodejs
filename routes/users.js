@@ -4,7 +4,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
 const User = require('../models/user'); // importo al modelo
-
+const bcrypt = require('bcrypt') // encriptar la contraseña
 // Middleware
 //definimos el formato que va,os a ocupar
 // app.use(bodyParser.json);
@@ -91,7 +91,7 @@ app.post("/user",(req,res)=>{
     lastName: body.lastName,
     email: body.email,
     username: body.username,
-    password: body.password,
+    password: bcrypt.hashSync(body.password,10), // estoy encriptando 10 veces al pass
     age: body.age,
     rol: body.rol,
     state: body.state
