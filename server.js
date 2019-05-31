@@ -25,7 +25,7 @@ app.use (require('./routes/index'))
 
 // hacemos la conexion con la base de datos ojo sgq es el nombre de la db
 // mongoose.connect('mongodb://localhost:27017/sga',{
-mongoose.connect('mongodb://localhost:27017/sga2',{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
+mongoose.connect(process.env.urlDB,{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
 
   useNewUrlParser: true
 },(err,res)=>{
