@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const port = 3000
 const User = require('../models/user'); // importo al modelo
 const bcrypt = require('bcrypt') // encriptar la contraseña
+const verificartoken = require('../middleware/auth')
 // Middleware
 //definimos el formato que va,os a ocupar
 // app.use(bodyParser.json);
@@ -22,7 +23,8 @@ const bcrypt = require('bcrypt') // encriptar la contraseña
 //   });
 // })
 // obtenemos elusuario
-app.get("/user", (req,res) => {
+                // verificamos token y luego con next pasamos a l;a funcion de este get
+app.get("/user",verificartoken, (req,res) => {
   // find(aqui van las condiciones de busquedas)
   User.find({
     "state":true
