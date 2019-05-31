@@ -3,11 +3,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
-// estas son las direcciones del archivo 
+// estas son las direcciones del archivo
 app.use(require('./users'));
 app.use(require('./rol'));
 app.use(require('./sala'));
 app.use(require('./permiso_acceso'));
+app.use(require('./login'));
+
 
 
 //ponemos la direccion donde vaya a buscar mi codigo

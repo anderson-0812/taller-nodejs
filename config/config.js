@@ -22,3 +22,7 @@ process.env.urlDB = urlDB
 
 // le digo que en caso de que tengamospuerto en heroku coja ese o si no 3500
 process.env.PORT = process.env.PORT || 3500;
+
+// ocupamos apra que jwt funcione
+process.env.SEED = process.env.SEED || "jwtsecretdev" // jwtsecretdev sera la palabra firma
+process.env.CADUCIDAD = process.env.CADUCIDAD || "1d" // definimos el tiempo de expiracion 
