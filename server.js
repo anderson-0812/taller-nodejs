@@ -34,4 +34,4 @@ mongoose.connect('mongodb://localhost:27017/sga2',{ //process.env.URLDB =>  de e
 })
 
 
-app.listen(port,() => console.log(`Corriendo in the port ${port}!`))
+app.listen(process.env.PORT,() => console.log(`Corriendo in the port ${port}!`))
