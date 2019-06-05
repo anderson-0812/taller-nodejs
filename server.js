@@ -25,7 +25,9 @@ app.use (require('./routes/index'))
 
 // hacemos la conexion con la base de datos ojo sgq es el nombre de la db
 // mongoose.connect('mongodb://localhost:27017/sga',{
-mongoose.connect(process.env.MONGO_URI,{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
+// para heroku mongoose.connect(process.env.MONGO_URI
+// para Local mongoose.connect('mongodb://localhost:27017/sga2'
+mongoose.connect('mongodb://localhost:27017/sga2',{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
 
   useNewUrlParser: true
 },(err,res)=>{
@@ -33,5 +35,5 @@ mongoose.connect(process.env.MONGO_URI,{ //process.env.URLDB =>  de esatamnera s
   console.log(`Mongo is working ${6 + 7}`);
 })
 
-
-app.listen(process.env.PORT,() => console.log(`Corriendo in the port ${port}!`))
+// sola esta linea es para heroku
+//app.listen(process.env.PORT,() => console.log(`Corriendo in the port ${port}!`))
