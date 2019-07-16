@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose'); // es elestandar de orm para mongodb
 const app = express()
 const bodyParser = require('body-parser')
-const port = 3500
+// const port = 3500
 
 // Middleware
 //definimos el formato que va,os a ocupar
@@ -27,13 +27,15 @@ app.use (require('./routes/index'))
 // mongoose.connect('mongodb://localhost:27017/sga',{
 // para heroku mongoose.connect(process.env.MONGO_URI
 // para Local mongoose.connect('mongodb://localhost:27017/sga2'
-mongoose.connect('mongodb://localhost:27017/sga2',{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
-
+// mongoose.connect('mongodb://localhost:27017/sga',{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
+// para local
+mongoose.connect(process.env.URLDB,{ //process.env.URLDB =>  de esatamnera s epone cuando ya tenemos configurado nuestro archivo config con la DB
   useNewUrlParser: true
-},(err,res)=>{
+},(err, res)=>{
   if(err) throw error;
   console.log(`Mongo is working ${6 + 7}`);
 })
+console.log('Desde server la urlde ladb '+ process.env.URLDB);
 
 // sola esta linea es para heroku
-//app.listen(process.env.PORT,() => console.log(`Corriendo in the port ${port}!`))
+app.listen(process.env.PORT,() => console.log(`Corriendo in the port ${process.env.PORT}!`))
