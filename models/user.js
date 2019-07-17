@@ -28,7 +28,7 @@ let userSchema = new Schema({
   rol:{
     type: Schema.Types.ObjectId,
     ref: 'Rol', // nombre de la tabla
-    required:[false,"El rol es requerido"]
+    required:[true,"El rol es requerido"]
   },
   state:{
 
