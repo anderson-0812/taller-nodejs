@@ -24,7 +24,7 @@ const verificartoken = require('../middleware/auth')
 // })
 // obtenemos elusuario
                 // verificamos token y luego con next pasamos a l;a funcion de este get
-app.get("/user",verificartoken, (req,res) => {
+app.get("/usuarios",verificartoken, (req,res) => {
   // find(aqui van las condiciones de busquedas)
   User.find({
     "state":true
@@ -43,19 +43,20 @@ app.get("/user",verificartoken, (req,res) => {
 });
 
 // Editar
-app.put("/user/:id",(req,res)=>{
+app.put("/usuarios/:id",(req,res)=>{
   let id = req.params.id;
   let body = req.body;
 
   // cargamos los valores
   let usuarioPorEditar = {
-    name: body.name,
-    lastName: body.lastName,
+    firstName: body.firstName,
+    secondName: body.secondName,
+    firstSurname: body.firstSurname,
+    secondSurname: body.secondSurname,
     email: body.email,
     username: body.username,
-    password: body.password,
-    age: body.age,
-    rol: body.rol
+    password: bcrypt.hashSync(body.password,10), // estoy encriptando 10 veces al pass
+    rol: body.rol,
 
   }
 
@@ -85,16 +86,17 @@ app.put("/user/:id",(req,res)=>{
 })
 
 // guardar
-app.post("/user",(req,res)=>{
+app.post("/usuarios",(req,res)=>{
   let body =req.body;
   //objeto a guardar
   let userGuardar = new User({
-    name: body.name,
-    lastName: body.lastName,
+    firstName: body.firstName,
+    secondName: body.secondName,
+    firstSurname: body.firstSurname,
+    secondSurname: body.secondSurname,
     email: body.email,
     username: body.username,
     password: bcrypt.hashSync(body.password,10), // estoy encriptando 10 veces al pass
-    age: body.age,
     rol: body.rol,
     state: body.state
   });
@@ -122,7 +124,7 @@ app.post("/user",(req,res)=>{
 })
 
 // eliminamos
-app.delete("/user/:id",(req,res)=>{
+app.delete("/usuarios/:id",(req,res)=>{
   let id = req.params.id
   let usuarioState = {
     state:false

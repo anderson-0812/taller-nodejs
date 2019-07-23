@@ -28,9 +28,9 @@ let userSchema = new Schema({
     type:String,
     required:[true,"El password es requerido"]
   },
-  age:{
-    type:Number
-  },
+  // age:{
+  //   type:Number
+  // },
   rol:{
     type: Schema.Types.ObjectId,
     ref: 'Rol', // nombre de la tabla
