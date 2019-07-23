@@ -4,7 +4,7 @@ const Rol = require('../models/rol');
 
 app.get('/rol',(req,res)=>{
   // ojo find(aqui van las condiciones de busqueda){}
-  Rol.find().exec((err,rolDB)=>{
+  Rol.find({state:true}).exec((err,rolDB)=>{
     if(err){
       return res.status(500).json({
         ok:false,
@@ -23,7 +23,7 @@ app.post('/rol',(req,res)=>{
 
   let rolParaGuardar = new Rol({
     name: body.name,
-    description: body.description
+    // description: body.description
   });
 
   rolParaGuardar.save((err,rolDB)=>{
