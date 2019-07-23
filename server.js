@@ -1,8 +1,10 @@
 require('./config/config') // esto va siempre al inicio apra q tomaesta configuracion antes q todo
+const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose'); // es elestandar de orm para mongodb
 const app = express()
 const bodyParser = require('body-parser')
+
 // const port = 3500
 
 // Middleware
@@ -10,7 +12,7 @@ const bodyParser = require('body-parser')
 //app.use(bodyParser.json);
 
 //es un standar para evitar un error de acceso a rutas en la etapa de desarrollo
-//app.use(cors());
+app.use(cors());
 // es un atribiuto de seguridad
 app.use(bodyParser.urlencoded({
   extended:false
