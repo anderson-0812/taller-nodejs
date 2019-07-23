@@ -13,7 +13,7 @@ let urlDB;
 process.env.ENV = 'dev'
 
 if(process.env.ENV == 'dev'){
-  urlDB = 'mongodb://localhost:27017/sgaTest2' // 2017 es un puerto x defecto
+  urlDB = 'mongodb://localhost:27017/sgaTest3' // 2017 es un puerto x defecto
   console.log('Entro al entorno de desarrollo '+urlDB)
 
 }else{
