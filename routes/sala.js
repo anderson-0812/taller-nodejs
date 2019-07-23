@@ -4,7 +4,7 @@ const Sala = require('../models/sala');
 // extraer datos
 app.get('/sala',(req,res)=>{
 
-  Sala.find().exec((err,salaDB)=>{
+  Sala.find({"state":true}).exec((err,salaDB)=>{
     if(err){
       return res.status(500).json({
         ok:false,
