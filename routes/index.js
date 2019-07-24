@@ -8,6 +8,7 @@ app.use(require('./users'));
 app.use(require('./rol'));
 app.use(require('./sala'));
 app.use(require('./permiso'));
+app.use(require('./acceso'));
 app.use(require('./login'));
 
 
