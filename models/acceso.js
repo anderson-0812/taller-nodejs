@@ -12,12 +12,12 @@ let PermisoSchema = new Schema({
   user:{
     type:Schema.Types.ObjectId,
     ref:"User",
-    required:[true,'Deberia ser asignado']
+    required:[true,'User Deberia ser asignado']
   },
   sala:{
     type:Schema.Types.ObjectId,
     ref:"Sala",
-    required:[true,'Deberia ser asignado']
+    required:[true,'Sala Deberia ser asignado']
   },
   typeAccess: {
     type: String,

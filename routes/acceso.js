@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const Acceso = require('../models/accesos');
+const Acceso = require('../models/acceso');
 const date = require('date-and-time');
 const dateFormat = require('dateformat');
 const Sala = require('../models/sala');
@@ -35,6 +35,15 @@ app.get('/acceso',(req,res)=>{
 
 app.post('/acceso',(req,res)=>{
   let body = req.body
+  // Valido si user o sala estan vacios
+  console.log('SALA ')
+  console.log(body.sala)
+
+  if (body.sala == undefined) {
+    console.log('SALA VACIO')
+    return null;
+
+  }
 
   let accesos_guardar_entrada = new Acceso({
     date:dateFormat(now,"dddd, d 'de' mmmm, yyyy"),
