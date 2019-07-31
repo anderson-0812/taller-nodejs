@@ -33,6 +33,34 @@ app.get('/acceso',(req,res)=>{
   })
 });
 
+app.get('/acceso/:idUser',(req,res)=>{
+  // console.log(req);
+  let idUser = req.params.idUser;
+
+  Acceso.find({state:true,user:idUser}).exec((err,accesos)=>{
+    console.log("Acceso");
+    console.log(accesos);
+    if(err){
+      return res.status(500).json({
+        ok:false,
+        err
+      })
+    }
+
+    if(!accesos){
+      return res.status(400).json({
+        ok: false,
+        err
+      })
+    }
+
+    res.status(200).json({
+      ok: true,
+      accesos
+    })
+  })
+});
+
 app.post('/acceso',(req,res)=>{
   let body = req.body
   // Valido si user o sala estan vacios
@@ -64,10 +92,15 @@ app.post('/acceso',(req,res)=>{
   })
 
   // El findOne trae solo un dato
+  console.log('user')
+  console.log(body.user)
   Acceso.findOne((
     {user:body.user}
   ),(err,result)=>{
+
     if(err){
+      console.log('err')
+      console.log(err)
       return res.status(500).json({
         ok:false,
         err
@@ -76,12 +109,18 @@ app.post('/acceso',(req,res)=>{
 
     if(result === null){
         accesos_guardar_entrada.save();
+
+    console.log('resultado busqueda NULL')
+    console.log(result)
       return res.status(200).json({
         ok:true,
         acceso:accesos_guardar_entrada
       })
     }else{
       if(result.typeAccess === 'SALIDA'){
+
+    console.log('resultado busqueda == salida')
+    console.log(result)
         accesos_guardar_entrada.save();
         return res.status(200).json({
           ok:true,
@@ -89,6 +128,9 @@ app.post('/acceso',(req,res)=>{
         })
       }else {
         if(result.typeAccess === 'ENTRADA')
+
+    console.log('resultado busqueda == ENTRADA')
+    console.log(result)
         accesos_guardar_salida.save();
         return res.status(200).json({
           ok:true,
